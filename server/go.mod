@@ -1,4 +1,4 @@
-module ShirtGo/server
+module Shirtgo/server
 
 go 1.19
 
