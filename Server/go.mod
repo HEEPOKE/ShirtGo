@@ -2,7 +2,12 @@ module shirt/Server
 
 go 1.19
 
-require github.com/gin-gonic/gin v1.8.1
+require (
+	github.com/gin-contrib/cors v1.4.0
+	github.com/gin-gonic/gin v1.8.1
+	gorm.io/driver/mysql v1.4.1
+	gorm.io/gorm v1.24.0
+)
 
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
@@ -27,7 +32,5 @@ require (
 	golang.org/x/text v0.3.6 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gorm.io/driver/mysql v1.4.1 // indirect
 	gorm.io/driver/sqlite v1.4.2 // indirect
-	gorm.io/gorm v1.24.0 // indirect
 )
