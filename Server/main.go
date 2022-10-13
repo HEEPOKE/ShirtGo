@@ -4,7 +4,8 @@ import (
 	"net/http"
 	"shirt/Server/models"
 
-	"github.com/gin-contrib/cors"
+	// "github.com/gin-contrib/cors"
+
 	"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -64,6 +65,7 @@ func main() {
 		db.Delete(&products)
 		c.JSON(200, products)
 	})
-	r.Use(cors.Default())
+
+	// r.Use(cors.Default())
 	r.Run()
 }

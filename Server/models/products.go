@@ -8,5 +8,5 @@ type Product struct {
 	Gender string
 	Style  string
 	Size   string
-	Price  uint
+	Price  int
 }
