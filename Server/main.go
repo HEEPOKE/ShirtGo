@@ -4,16 +4,16 @@ import (
 	"net/http"
 	"shirt/Server/models"
 
-	// "github.com/gin-contrib/cors"
 
-	"github.com/gin-gonic/gin"
+"github.com/gin-gonic/gin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
-func main() {
-	dsn := "root@tcp(127.0.0.1:3306)/shirtgo?charset=utf8&parseTime=True&loc=Local"
+unc main() {
+	dsn := "roottcp(127.0.0.1:3306)/shirtgo?charset=utf8&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	if err != nil {
 	if err != nil {
 		panic("failed to connect database")
 	}
@@ -54,18 +54,17 @@ func main() {
 		updateProduct.Style = product.Style
 		updateProduct.Size = product.Size
 		updateProduct.Price = product.Price
-		db.Save(updateProduct)
-		c.JSON(200, updateProduct)
+		c.JSON(200, updateProdct)
 	})
 
-	r.DELETE("/products/:id", func(c *gin.Context) {
+r.DELETE("/products/:id", func(c *gin.Context) {
 		id := c.Param("id")
-		var products models.Product
+		var products modelsProduct
 		db.First(&products, id)
 		db.Delete(&products)
-		c.JSON(200, products)
+		c.JSON(200, products
 	})
 
-	// r.Use(cors.Default())
+// r.Use(cors.Default())
 	r.Run()
 }

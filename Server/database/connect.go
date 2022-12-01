@@ -1,11 +1,10 @@
 package database
 
 import (
-	"database/sql"
-	"fmt"
-	"log"
+	"os"
+	"shirt/Server/models"
 
-	_ "github.com/go-sql-driver/mysql"
+	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
 
@@ -13,11 +12,12 @@ var DB *gorm.DB
 var err error
 
 func Connect() {
-	db, err := sql.Open("mysql")
+	dsn := os.Getenv("DB_USERNAME") + ":@tcp(" + os.Getenv("HOST") + ")/" + os.Getenv("DB_NAME") + "?charset=utf8&parseTime=True&loc=Local"
+	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
-		log.Printf("Error %s when opening DB\n", err)
-		return
+		panic("failed to connect database")
 	}
-	fmt.Println("DB Connected!!")
+
+	DB.AutoMigrate(&models.Product{})
 
 }
